@@ -37,26 +37,19 @@ body.page-music{background:#f4efd8}body.page-music header{background:#f4efd8}.pa
 <script>
 const base='https://pub-fe8737b1ffef4e83bb0f96ccacd0f0d0.r2.dev/';
 const artwork=base+'artwork/releases/cover%20001%20.jpg';
-const tracks=[
-{file:'the%20palme%20tree%20of%20semawa%20-%20Mohanad%20dyali%20.mp3',title:'The Palm Tree of Semawa',artist:'Mohanad Dyali',type:'Trap',year:'2022',credits:'Vocals: Mohanad Dyali. Lyrics and composition based on Iraqi heritage. Music production: J JAM.'},
-{file:'shams%20aldoa%20-%20Jaffal%20Brothers%20.mp3',title:'Shams Al Doa',artist:'Jaffal Brothers',type:'Electronic',year:'2020',credits:'Arranged and mixed by Atef, Otail and Omar Al Jaffal.'},
-{file:'Muna%20-%20Atef%20Al%20Jaffal.mp3',title:'Muna',artist:'Atef Al Jaffal',type:'Acoustic',year:'2018',credits:'Composed and mixed by Atef Al Jaffal, in cooperation with TARKIB NGO.',description:'A track from an unreleased album.'},
-{file:'Childhood%20of%20Damascus%20-%20Atef%20Al%20Jaffal.mp3',title:'Childhood of Damascus',artist:'Atef Al Jaffal',type:'Acoustic',year:'2018',credits:'Composed and mixed by Atef Al Jaffal, in cooperation with TARKIB NGO.',description:'A track from an unreleased album.'},
-{file:'Atofe%20in%20Berlin%20-%20Omar%20Al%20Jaffal.wav',title:'Atofe in Berlin',artist:'Omar Al Jaffal',type:'Electronic',year:'2023',credits:'Produced and mixed by Omar Al Jaffal.',description:'A track from the Jaffal Brothers band private jams.'},
-{file:'Abu%20Nawas%20Jaffal%20Brothers.mp3',title:'Abu Nawas',artist:'Jaffal Brothers',type:'Electronic',year:'2023',credits:'Arranged and mixed by Atef, Otail and Omar Al Jaffal.',description:'After Abu Nawas statue was temporarily removed in Baghdad, we did a jam imagining Abu Nawas statue dancing somewhere we do not know in the capital.'}
-];
 const tracksEl=document.getElementById('tracks');
-function render(filter='all'){
+function render(tracks,filter='all'){
  tracksEl.innerHTML='';
- const shown=tracks.filter(t=>filter==='all'||t.type.toLowerCase()===filter);
- shown.forEach((t,i)=>{
-  const section=document.createElement('section'); section.className='release'; section.dataset.type=t.type.toLowerCase();
+ tracks.filter(t=>filter==='all'||t.type.toLowerCase().replace(' music','')===filter).forEach((t,i)=>{
+  const section=document.createElement('section'); section.className='release';
   section.innerHTML='<div><div class="eyebrow">'+(i===0?'Release / J JAM':'Release')+' / '+t.year+'</div><h2>'+t.title+'</h2></div><div class="release-grid"><img class="cover" src="'+artwork+'" alt="'+t.title+' artwork"><div><div class="track-title">'+t.title+'</div><div class="artist">'+t.artist+'</div><audio controls preload="none" src="'+base+'msuic/releases/'+t.file+'"></audio><div class="meta"><span>'+t.type+'</span><span>'+t.year+'</span><span>J JAM</span></div><p class="credits">'+t.credits+(t.description?' '+t.description:'')+'</p></div></div>';
   tracksEl.appendChild(section);
  });
 }
-document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render(btn.dataset.filter)}));
-render();
-const musicIntroHead=document.getElementById('musicIntroHead');document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>musicIntroHead.classList.add('collapsed')));
+fetch('/content.json').then(r=>r.json()).then(data=>{
+ const tracks=data.releases||[];
+ document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render(tracks,btn.dataset.filter);document.getElementById('musicIntroHead').classList.add('collapsed')}));
+ render(tracks);
+}).catch(()=>{tracksEl.innerHTML='<div class="empty">Unable to load releases right now.</div>';});
 </script>
 </body></html>
