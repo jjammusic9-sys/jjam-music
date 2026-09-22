@@ -2,6 +2,17 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (url.pathname === "/api/auth" && request.method === "POST") {
+      if (!env.ADMIN_KEY || request.headers.get("X-JJAM-ADMIN-KEY") !== env.ADMIN_KEY) {
+        return new Response("Unauthorized", { status: 401 });
+      }
+      return new Response(null, { status: 204 });
+    }
+
+    if (url.pathname === "/admin.html") {
+      return new Response("Not found", { status: 404 });
+    }
+
     if (url.pathname === "/api/upload" && request.method === "POST") {
       if (!env.ADMIN_KEY || request.headers.get("X-JJAM-ADMIN-KEY") !== env.ADMIN_KEY) {
         return new Response("Unauthorized", { status: 401 });
