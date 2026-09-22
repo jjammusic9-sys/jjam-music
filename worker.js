@@ -8,12 +8,12 @@ export default {
       }
       const form = await request.formData();
       const file = form.get("file");
-      const folder = String(form.get("folder") || "music");
+      const prefix = String(form.get("prefix") || "msuic/library");
       if (!(file instanceof File)) return new Response("Missing file", { status: 400 });
-      if (!["music","artwork"].includes(folder)) return new Response("Invalid folder", { status: 400 });
+      if (!["msuic/releases","msuic/library","artwork/releases","artwork/library"].includes(prefix)) return new Response("Invalid folder", { status: 400 });
       if (file.size > 200 * 1024 * 1024) return new Response("File too large", { status: 413 });
       const safeName = file.name.normalize("NFKC").replace(/[^\w.()\- ]+/g, "_").replace(/\s+/g, " ").trim();
-      const key = folder + "/" + safeName;
+      const key = prefix + "/" + safeName;
       await env.JJAM_R2.put(key, file.stream(), {
         httpMetadata: { contentType: file.type || "application/octet-stream" }
       });
