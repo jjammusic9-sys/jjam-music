@@ -1,7 +1,17 @@
 {
   "name": "jjam-music",
+  "main": "./worker.js",
   "compatibility_date": "2026-09-22",
   "assets": {
     "directory": "./public"
+  },
+  "r2_buckets": [
+    {
+      "binding": "JJAM_R2",
+      "bucket_name": "jjam-music"
+    }
+  ],
+  "vars": {
+    "R2_PUBLIC_BASE": "https://pub-fe8737b1ffef4e83bb0f96ccacd0f0d0.r2.dev"
   }
 }
