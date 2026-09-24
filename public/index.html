@@ -11,30 +11,30 @@
 .wrap{max-width:1500px;margin:auto;padding:0 42px}
 .eyebrow{font-size:10px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase}
 .hero{min-height:100vh;position:relative;padding:42px 0 34px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-.hero-top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:2}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:4}
 .stamp{font-size:12px;font-weight:900;text-transform:uppercase;border:2px solid var(--ink);padding:9px 12px;transform:rotate(-2deg)}
-.hero-copy-wrap{position:relative;z-index:2;max-width:900px;margin-top:7vh;margin-left:4vw}
+h1{font-size:clamp(90px,17vw,245px);line-height:.73;letter-spacing:-.105em;margin:0 0 34px;font-weight:900}\n.hero-copy-wrap{position:relative;z-index:2;max-width:1050px;margin:17vh auto 0;text-align:center;display:flex;flex-direction:column;align-items:center}
 h1{font-size:clamp(90px,17vw,245px);line-height:.73;letter-spacing:-.105em;margin:0 0 34px;font-weight:900}
 .hero-copy{font-size:clamp(21px,2.2vw,31px);line-height:1.08;max-width:690px;margin-left:15vw}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px;margin-left:15vw}.button{display:inline-block;border:2px solid var(--ink);padding:15px 21px;font-size:11px;font-weight:900;text-transform:uppercase;transition:transform .2s,background .2s}.button.primary{background:var(--turq)}.button:hover{transform:translate(-3px,-3px);background:var(--soft)}
-.ticker{position:relative;z-index:3;border-top:2px solid var(--ink);padding-top:12px;font-size:10px;font-weight:900;text-transform:uppercase;display:flex;justify-content:space-between}
-.mark{position:absolute;right:-7vw;top:5vh;width:min(52vw,720px);height:min(52vw,720px);z-index:1;overflow:visible}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px;justify-content:center}.button{display:inline-block;border:2px solid var(--ink);padding:15px 21px;font-size:11px;font-weight:900;text-transform:uppercase;transition:transform .2s,background .2s}.button.primary{background:var(--turq)}.button:hover{transform:translate(-3px,-3px);background:var(--soft)}
+.ticker{position:relative;z-index:3;border-top:2px solid var(--ink);padding-top:12px;font-size:10px;font-weight:900;text-transform:uppercase;display:flex;justify-content:space-between}\n.hero::after{content:"J JAM";position:absolute;z-index:3;left:50%;top:52%;transform:translateX(-50%) rotate(-2deg);font-size:clamp(46px,7vw,105px);font-weight:900;letter-spacing:-.08em;white-space:nowrap}
+.mark{position:absolute;left:50%;top:-205px;transform:translateX(-50%);width:min(74vw,900px);height:min(74vw,900px);z-index:1;overflow:visible}
 .mark .ring{fill:none;stroke:var(--ink);stroke-width:2}.mark .turq{fill:none;stroke:var(--turq);stroke-width:12}.mark .thin{fill:none;stroke:var(--ink);stroke-width:1.5}.mark .dash{fill:none;stroke:var(--turq);stroke-width:3;stroke-dasharray:3 16}.mark .blob{fill:var(--turq);opacity:.9}.mark .core{fill:var(--ink)}
 .spin{transform-origin:360px 360px;animation:spin 18s linear infinite}.spin2{transform-origin:360px 360px;animation:spin 27s linear infinite reverse}.float{animation:float 5s ease-in-out infinite}
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes float{50%{transform:translate(8px,-12px) rotate(4deg)}}
 section{border-top:2px solid var(--ink);padding:120px 0;position:relative;overflow:hidden}
-.section-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:70px;align-items:start}
-.section-grid.reverse{grid-template-columns:1.6fr .9fr}.section-grid.reverse>div:first-child{grid-column:2}.section-grid.reverse>div:last-child{grid-column:1;grid-row:1}
+.section-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:start}
+.section-grid.reverse{grid-template-columns:1fr 1fr;gap:110px}.section-grid.reverse>div:first-child{grid-column:2;grid-row:1}.section-grid.reverse>div:last-child{grid-column:1;grid-row:1}
 h2{font-size:clamp(62px,9vw,132px);line-height:.79;letter-spacing:-.085em;margin:0;font-weight:900;max-width:850px}
 .copy{font-size:clamp(20px,2vw,27px);line-height:1.16;max-width:720px;margin:0 0 25px}
-.about-title{transform:rotate(-2deg);margin-left:3vw}.about-copy{margin-top:55px;margin-left:8vw}
-.latte{background:var(--turq);min-height:78vh}.latte-title{max-width:850px;margin-left:auto;transform:rotate(1.5deg)}.latte-copy{max-width:620px;margin:70px 0 0 8vw}
-.jjam{background:#171614;color:var(--bg);min-height:90vh}.jjam .eyebrow{color:var(--turq)}.jjam-title{font-size:clamp(100px,18vw,270px);margin-left:2vw;transform:rotate(-1deg)}.jjam-copy{margin-left:13vw;margin-top:30px}
-.jjam-card{margin:80px 7vw 0 0;border:2px solid var(--bg);padding:30px;display:flex;align-items:flex-end;justify-content:space-between;gap:35px;transform:rotate(.7deg)}.jjam-card strong{font-size:clamp(42px,6vw,88px);line-height:.82;letter-spacing:-.065em}.jjam-card span{font-size:11px;font-weight:900;text-transform:uppercase;max-width:250px;line-height:1.15}
-.contact-title{margin-left:18vw}.contact-copy{margin:70px 0 0 3vw;max-width:650px}.contact-actions{margin-left:3vw}
+.about-title{transform:rotate(-2deg);margin-left:3vw;max-width:620px}.about-copy{margin-top:150px;margin-left:5vw;max-width:700px}
+.latte{background:var(--turq);min-height:88vh}.latte-title{max-width:850px;margin-left:auto;transform:rotate(1.5deg)}.latte-copy{max-width:620px;margin:180px 0 0 4vw}
+.jjam{background:#171614;color:var(--bg);min-height:95vh}.jjam .eyebrow{color:var(--turq)}.jjam-title{font-size:clamp(100px,18vw,270px);margin-left:2vw;transform:rotate(-1deg)}.jjam-copy{margin-left:6vw;margin-top:120px;max-width:760px}
+.jjam-card{margin:130px 7vw 0 0;border:2px solid var(--bg);padding:30px;display:flex;align-items:flex-end;justify-content:space-between;gap:35px;transform:rotate(.7deg)}.jjam-card strong{font-size:clamp(42px,6vw,88px);line-height:.82;letter-spacing:-.065em}.jjam-card span{font-size:11px;font-weight:900;text-transform:uppercase;max-width:250px;line-height:1.15}
+.contact-title{margin-left:18vw}.contact-copy{margin:130px 0 0 3vw;max-width:650px}.contact-actions{margin-left:0}
 .contact-shape{position:absolute;right:-130px;bottom:-170px;width:420px;height:420px;border:2px solid var(--ink);border-radius:48% 52% 41% 59%;transform:rotate(18deg)}.contact-shape:after{content:"";position:absolute;inset:45px;border:12px solid var(--turq);border-radius:57% 43% 55% 45%}
 footer{border-top:2px solid var(--ink);padding:25px 0 45px;display:flex;justify-content:space-between;font-size:10px;font-weight:900;text-transform:uppercase}
-@media(max-width:800px){.wrap{padding:0 18px}.hero{padding-top:25px}.stamp{font-size:9px}.hero-copy-wrap{margin:12vh 0 0}.hero-copy,.actions{margin-left:4vw}.hero-copy{font-size:21px}.mark{right:-125px;top:13vh;width:410px;height:410px;opacity:.65}section{padding:75px 0}.section-grid,.section-grid.reverse{display:block}.section-grid.reverse>div:first-child,.section-grid.reverse>div:last-child{display:block}.about-title,.latte-title,.jjam-title,.contact-title{margin-left:0}.about-copy,.latte-copy,.jjam-copy,.contact-copy{margin-left:4vw;margin-top:45px}.jjam-title{font-size:25vw}.jjam-card{margin:55px 0 0;display:block}.jjam-card span{display:block;margin-top:25px}.contact-shape{width:280px;height:280px;right:-120px;bottom:-100px}footer{gap:20px;flex-direction:column}}
+@media(max-width:800px){.wrap{padding:0 18px}.hero{padding-top:25px;min-height:900px}.hero-top{align-items:flex-start}.stamp{font-size:9px}.hero-copy-wrap{margin:36vh 0 0;max-width:100%}.hero-copy-wrap h1{font-size:22vw;line-height:.76}.hero-copy{font-size:20px;max-width:330px}.actions{margin-top:25px}.mark{left:50%;top:-110px;width:690px;height:690px;opacity:.72}.hero::after{top:54%;font-size:15vw}section{padding:75px 0}.section-grid,.section-grid.reverse{display:block}.section-grid.reverse>div:first-child,.section-grid.reverse>div:last-child{display:block}.about-title,.latte-title,.jjam-title,.contact-title{margin-left:0}.about-copy,.latte-copy,.jjam-copy,.contact-copy{margin-left:4vw;margin-top:80px}.latte-copy{margin-top:100px}.jjam-copy{margin-top:80px}.jjam-title{font-size:25vw}.jjam-card{margin:80px 0 0;display:block}.jjam-card span{display:block;margin-top:25px}.contact-title{margin-top:20px}.contact-shape{width:280px;height:280px;right:-120px;bottom:-100px}footer{gap:20px;flex-direction:column}}
 </style>
 </head>
 <body>
